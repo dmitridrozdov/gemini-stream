@@ -1,7 +1,6 @@
 "use client";
 import { useChat } from "ai/react";
 import { Bot, Loader, Loader2, Send, User2 } from "lucide-react";
-import Image from "next/image";
 import Markdown from "./component/markdown";
 
 export default function Home() {
@@ -64,7 +63,7 @@ export default function Home() {
           return (
             <div
               className={`p-4 shadow-md rounded-md ml-10 relative ${
-                m.role === "user" ? "bg-stone-300" : ""
+                m.role === "user" ? "bg-indigo-100" : ""
               }`}
             >
               <Markdown text={m.content} />
