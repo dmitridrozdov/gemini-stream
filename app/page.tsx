@@ -61,7 +61,7 @@ export default function Home() {
       <div id="chatbox" className="flex flex-col-reverse w-full text-left mt-4 gap-4 whitespace-pre-wrap">
         {messages.map((m, index) => {
           return (
-            <div
+            <div key={index}
               className={`p-4 shadow-md rounded-md ml-10 relative ${
                 m.role === "user" ? "bg-indigo-100" : ""
               }`}
