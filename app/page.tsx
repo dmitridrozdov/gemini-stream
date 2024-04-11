@@ -2,7 +2,7 @@
 import { useChat } from "ai/react";
 import { Bot, Loader, Loader2, Send, User2 } from "lucide-react";
 import Image from "next/image";
-// import Markdown from "./component/markdown";
+import Markdown from "./component/markdown";
 
 export default function Home() {
   const { messages, input, handleInputChange, handleSubmit, isLoading, stop } =
@@ -14,8 +14,7 @@ export default function Home() {
       {/* form element */}
       {RenderForm()}
       {/* rendering messages */}
-      {JSON.stringify(messages)}
-      {/* {RenderMessages()} */}
+      {RenderMessages()}
     </main>
   );
 
@@ -58,32 +57,32 @@ export default function Home() {
     );
   }
 
-  // function RenderMessages() {
-  //   return (
-  //     <div id="chatbox" className="flex flex-col-reverse w-full text-left mt-4 gap-4 whitespace-pre-wrap">
-  //       {messages.map((m, index) => {
-  //         return (
-  //           <div
-  //             className={`p-4 shadow-md rounded-md ml-10 relative ${
-  //               m.role === "user" ? "bg-stone-300" : ""
-  //             }`}
-  //           >
-  //             <Markdown text={m.content} />
-  //             {m.role === "user" ? (
-  //               <User2 className="absolute top-2 -left-10 border rounded-full p-1 shadow-lg" />
-  //             ) : (
-  //               <Bot
-  //                 className={`absolute top-2 -left-10 border rounded-full p-1 shadow-lg stroke-[#0842A0] ${
-  //                   isLoading && index === messages.length - 1
-  //                     ? "animate-bounce"
-  //                     : ""
-  //                 }`}
-  //               />
-  //             )}
-  //           </div>
-  //         );
-  //       })}
-  //     </div>
-  //   );
-  // }
+  function RenderMessages() {
+    return (
+      <div id="chatbox" className="flex flex-col-reverse w-full text-left mt-4 gap-4 whitespace-pre-wrap">
+        {messages.map((m, index) => {
+          return (
+            <div
+              className={`p-4 shadow-md rounded-md ml-10 relative ${
+                m.role === "user" ? "bg-stone-300" : ""
+              }`}
+            >
+              <Markdown text={m.content} />
+              {m.role === "user" ? (
+                <User2 className="absolute top-2 -left-10 border rounded-full p-1 shadow-lg" />
+              ) : (
+                <Bot
+                  className={`absolute top-2 -left-10 border rounded-full p-1 shadow-lg stroke-[#0842A0] ${
+                    isLoading && index === messages.length - 1
+                      ? "animate-bounce"
+                      : ""
+                  }`}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 }
